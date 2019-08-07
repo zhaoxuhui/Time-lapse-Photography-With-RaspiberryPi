@@ -61,10 +61,10 @@ for i in range(paths.__len__()):
     hour = str_time[3]
     minute = str_time[4]
     second = str_time[5]
+    frame = cv2.resize(frame, (width, height), interpolation=cv2.INTER_AREA)
     frame = cv2.putText(frame, year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second,
                         (10, height - 25), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
                         (255, 255, 255), 1, cv2.LINE_AA)
-    frame = cv2.resize(frame, (width, height), interpolation=cv2.INTER_AREA)
     out.write(frame)
     count += 1
     print paths[i] + "  " + ((count * 1.0 / paths.__len__()) * 100).__str__() + " %"
